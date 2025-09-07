@@ -22,7 +22,7 @@ const userSchema = new Schema<IUser>({
     },
     password:{
         type:String,
-        requied: [true,"password is required"],
+        required: [true,"password is required"],
         minLength: [6, 'Password must be at least 6 characters long']
     }
 },{

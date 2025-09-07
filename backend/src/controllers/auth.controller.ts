@@ -59,15 +59,19 @@ export const signup = async (req: AuthRequest, res: Response) => {
 export const signin = async (req: AuthRequest, res: Response) => {
   try {
     const { email, password } = req.body;
-    
+
+    if (!process.env.JWT_SECRET) {
+      return res.status(500).json({ message: "Server configuration error: JWT_SECRET not set" });
+    }
+
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    
+
 
     if (!user.password) {
-      
+
       return res.status(500).json({ message: "Password not found for user" });
     }
 
@@ -75,14 +79,14 @@ export const signin = async (req: AuthRequest, res: Response) => {
     if (!isPasswordValid) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-    
+
     // Generate a new JWT
     const token = jwt.sign(
       { userId: user._id },
       process.env.JWT_SECRET as string,
       { expiresIn: '1d' }
     );
-    
+
     res.status(200).json({
       message: "Logged in successfully",
       token,
