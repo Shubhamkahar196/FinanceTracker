@@ -73,7 +73,7 @@ cd ../frontend
 npm install
 Create a .env.local file in the frontend directory and add the backend API URL.
 
-NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api
+NEXT_PUBLIC_API_BASE_URL=http://localhost:5000/api/v1
 Start the frontend development server.
 
 Bash
@@ -92,11 +92,10 @@ Endpoint	Method	Description	Access
 /api/v1/transactions/:id	PUT	Updates a specific transaction.	Private
 /api/v1/transactions/:id	DELETE	Deletes a specific transaction.	Private
 
-Export to Sheets
-Live Demo
-This section is for a live version of the project once it is deployed.
 
-Live Link: [Link to your deployed application]
+Live Demo
+
+Live Link:https://finance-tracker-iota-lac.vercel.app/
 
 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
