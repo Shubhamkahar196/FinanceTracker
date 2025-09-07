@@ -9,8 +9,9 @@ const app = express();
 dotenv.config();
 connectDb();   //connecting db
 
+const allowedOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 app.use(cors({
-    origin: 'http://localhost:3000', 
+    origin: allowedOrigin, 
 }));
 app.use(express.json());
 
