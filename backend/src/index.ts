@@ -9,9 +9,15 @@ const app = express();
 dotenv.config();
 connectDb();   //connecting db
 
-const allowedOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 app.use(cors({
-    origin: allowedOrigin, 
+    origin: function (origin, callback) {
+        const allowedOrigins = ['http://localhost:3000', 'https://finance-tracker-iota-lac.vercel.app'];
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }));
 app.use(express.json());
 
