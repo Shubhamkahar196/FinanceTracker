@@ -33,7 +33,6 @@ const SignupForm: React.FC = () => {
         password,
       });
 
-      console.log('Signup successful:', response.data);
       setSuccess('Account created successfully! You can now log in.');
       
       // We will handle storing the token in the next step

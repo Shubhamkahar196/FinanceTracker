@@ -34,7 +34,6 @@ const LoginForm: React.FC = () => {
         password,
       });
 
-      console.log('Login successful:', response.data);
       setSuccess('Login successful! Redirecting...');
 
       localStorage.setItem('token', response.data.token);

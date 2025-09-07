@@ -66,8 +66,7 @@ const SpendingChart: React.FC<SpendingChartProps> = ({ transactions }) => {
       {
         label: 'Spending by Category',
         data: dataValues,
-        backgroundColor: 'rgb(128,128,128)',
-        // backgroundColor: 'rgba(90.5%, 0.093, 164.15)',
+        backgroundColor: 'rgba(255, 99, 132, 0.6)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },
@@ -107,7 +106,7 @@ const SpendingChart: React.FC<SpendingChartProps> = ({ transactions }) => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md w-full">
-      <Bar data={chartData} options={options} />
+      <Bar key={transactions.length} data={chartData} options={options} />
     </div>
   );
 };
