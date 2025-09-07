@@ -7,6 +7,7 @@ import axios from 'axios';
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const SignupForm: React.FC = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,7 @@ const SignupForm: React.FC = () => {
 
     try {
       const response = await axios.post(`${API_BASE_URL}/auth/signup`, {
+        name,
         email,
         password,
       });
@@ -51,6 +53,21 @@ const SignupForm: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4 text-gray-900 text-center">Sign Up</h2>
       {success && <p className="text-green-500 mb-4">{success}</p>}
       {error && <p className="text-red-500 mb-4">{error}</p>}
+
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          placeholder="Enter your name"
+          required
+        />
+      </div>
 
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">

@@ -24,35 +24,35 @@ const HomePage: React.FC = () => {
   if (loading) {
   
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl">Loading...</p>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <p className="text-2xl font-semibold text-white">Loading...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
       <Head>
         <title>Finance Tracker - Login/Sign Up</title>
       </Head>
 
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <h1 className="mt-6 text-3xl font-extrabold text-gray-900">
+          <h1 className="mt-6 text-5xl font-extrabold text-gray-900 drop-shadow-lg">
             Welcome to your Finance Tracker!
           </h1>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-4 text-lg text-gray-700">
             {showLogin ? "Don't have an account?" : "Already have an account?"}
             <button
               type="button"
               onClick={() => setShowLogin(!showLogin)}
-              className="font-medium text-indigo-600 hover:text-indigo-500 ml-1"
+              className="font-semibold text-indigo-600 hover:text-indigo-800 ml-2 transition duration-300"
             >
               {showLogin ? 'Sign up' : 'Login'}
             </button>
           </p>
         </div>
-        
+
         {showLogin ? <LoginForm /> : <SignupForm />}
       </div>
     </div>

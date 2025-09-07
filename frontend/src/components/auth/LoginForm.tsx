@@ -39,6 +39,7 @@ const LoginForm: React.FC = () => {
 
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('userId', response.data.userId);
+      localStorage.setItem('userName', response.data.name);
       router.push('/dashboard');
 
       

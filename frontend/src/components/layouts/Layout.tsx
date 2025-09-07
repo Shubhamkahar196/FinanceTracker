@@ -1,6 +1,6 @@
 
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -10,6 +10,15 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const [userInitial, setUserInitial] = useState<string>('');
+
+  useEffect(() => {
+    const userName = localStorage.getItem('userName');
+    if (userName && userName.length > 0) {
+      setUserInitial(userName.charAt(0).toUpperCase());
+    }
+  }, []);
+
   return (
     <>
       <Head>
@@ -27,11 +36,16 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             </a>
           </Link>
           <nav>
-            <ul className="flex space-x-4">
+            <ul className="flex space-x-4 items-center">
               <li>
                 <Link href="/dashboard" legacyBehavior>
                   <a className="text-gray-600 hover:text-gray-900">Dashboard</a>
                 </Link>
+              </li>
+              <li>
+                <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-lg">
+                  {userInitial}
+                </div>
               </li>
               {/* We will add a logout button here later with our auth context */}
             </ul>

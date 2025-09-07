@@ -9,6 +9,7 @@ import User from "../models/user.model.js";
 
 interface AuthRequest extends Request {
   body: {
+    name?: string;
     email: string;
     password: string;
   };
@@ -22,7 +23,7 @@ const handleServerError = (res: Response, error: unknown) => {
 
 export const signup = async (req: AuthRequest, res: Response) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
     
   
     const existingUser = await User.findOne({ email });
@@ -34,7 +35,7 @@ export const signup = async (req: AuthRequest, res: Response) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     
     // Create a new user with the hashed password
-    const newUser = new User({ email, password: hashedPassword });
+    const newUser = new User({ name, email, password: hashedPassword });
     const savedUser = await newUser.save();
     
     // Generate a JWT
@@ -86,6 +87,7 @@ export const signin = async (req: AuthRequest, res: Response) => {
       message: "Logged in successfully",
       token,
       userId: user._id,
+      name: user.name,
     });
   } catch (error) {
     handleServerError(res, error);

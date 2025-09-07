@@ -1,5 +1,3 @@
-
-
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -183,17 +181,20 @@ const Dashboard: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl">Loading...</p>
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <p className="text-2xl font-semibold text-white">Loading...</p>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-xl text-red-500">{error}</p>
-        <button onClick={handleLogout} className="ml-4 bg-gray-500 text-white p-2 rounded">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-red-100">
+        <p className="text-xl text-red-700 mb-4">{error}</p>
+        <button
+          onClick={handleLogout}
+          className="bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6 rounded shadow"
+        >
           Logout
         </button>
       </div>
@@ -201,34 +202,37 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 p-8">
       <Head>
         <title>Finance Tracker - Dashboard</title>
       </Head>
 
-      <div className="flex justify-between items-center mb-8">
-        <h1 className="text-4xl font-extrabold text-gray-900">Dashboard</h1>
-        <button onClick={handleLogout} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+      <div className="flex justify-between items-center mb-10">
+        <h1 className="text-5xl font-extrabold text-gray-900 drop-shadow-lg">Dashboard</h1>
+        <button
+          onClick={handleLogout}
+          className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-300"
+        >
           Logout
         </button>
       </div>
 
-      <div className="bg-gray-700 p-6 rounded-lg shadow-md mb-8">
-        <h2 className="text-2xl font-bold mb-4">Add New Transaction</h2>
+      <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-lg mb-10 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-6 text-gray-800">Add New Transaction</h2>
         {!editingTransaction ? (
-          <form onSubmit={handleAdd} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form onSubmit={handleAdd} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
               type="number"
               placeholder="Amount"
               value={newAmount}
               onChange={(e) => setNewAmount(e.target.value)}
               required
-              className="border p-2 rounded"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <select
               value={newType}
               onChange={(e) => setNewType(e.target.value as 'income' | 'expense')}
-              className="border p-2 rounded"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
@@ -239,43 +243,43 @@ const Dashboard: React.FC = () => {
               value={newCategory}
               onChange={(e) => setNewCategory(e.target.value)}
               required
-              className="border p-2 rounded"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <input
               type="date"
               value={newDate}
               onChange={(e) => setNewDate(e.target.value)}
               required
-              className="border p-2 rounded"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <input
               type="text"
               placeholder="Description"
               value={newDescription}
               onChange={(e) => setNewDescription(e.target.value)}
-              className="border p-2 rounded md:col-span-2"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition md:col-span-2"
             />
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded md:col-span-2"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 md:col-span-2"
             >
               Add Transaction
             </button>
           </form>
         ) : (
-          <form onSubmit={handleUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <form onSubmit={handleUpdate} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
               type="number"
               placeholder="Amount"
               value={editAmount}
               onChange={(e) => setEditAmount(e.target.value)}
               required
-              className="border p-2 rounded"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <select
               value={editType}
               onChange={(e) => setEditType(e.target.value as 'income' | 'expense')}
-              className="border p-2 rounded"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
@@ -286,33 +290,33 @@ const Dashboard: React.FC = () => {
               value={editCategory}
               onChange={(e) => setEditCategory(e.target.value)}
               required
-              className="border p-2 rounded"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <input
               type="date"
               value={editDate}
               onChange={(e) => setEditDate(e.target.value)}
               required
-              className="border p-2 rounded"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <input
               type="text"
               placeholder="Description"
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
-              className="border p-2 rounded md:col-span-2"
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition md:col-span-2"
             />
             <div className="flex space-x-4 md:col-span-2">
               <button
                 type="submit"
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300"
               >
                 Update Transaction
               </button>
               <button
                 type="button"
                 onClick={cancelEdit}
-                className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                className="bg-gray-500 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300"
               >
                 Cancel
               </button>
