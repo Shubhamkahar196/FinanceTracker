@@ -3,11 +3,15 @@ import connectDb from './config/db.js';
 import dotenv from 'dotenv'
 import authRouter from './routes/auth.routes.js'
 import transactionRoute from './routes/transaction.routes.js'
+import cors from 'cors';
 const app = express();
   
 dotenv.config();
 connectDb();   //connecting db
 
+app.use(cors({
+    origin: 'http://localhost:3000', 
+}));
 app.use(express.json());
 
 

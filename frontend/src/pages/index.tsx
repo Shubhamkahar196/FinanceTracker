@@ -1,25 +1,47 @@
-// src/pages/index.tsx
+
 
 import Head from 'next/head';
-import { useState } from 'react';
-import LoginForm from '@/components/auth/LoginForm';
-import SignupForm from '@/components/auth/SignupForm';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import LoginForm from '../components/auth/LoginForm';
+import SignupForm from '../components/auth/SignupForm';
 
 const HomePage: React.FC = () => {
+  const router = useRouter();
   const [showLogin, setShowLogin] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      router.push('/dashboard');
+    } else {
+      setLoading(false);
+    }
+  }, [router]);
+
+  if (loading) {
+  
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-xl">Loading...</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-screen bg-black flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8">
       <Head>
         <title>Finance Tracker - Login/Sign Up</title>
       </Head>
 
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          <h1 className="mt-6 text-3xl font-extrabold text-gray-100">
+          <h1 className="mt-6 text-3xl font-extrabold text-gray-900">
             Welcome to your Finance Tracker!
           </h1>
-          <p className="mt-2 text-sm text-gray-400">
+          <p className="mt-2 text-sm text-gray-600">
             {showLogin ? "Don't have an account?" : "Already have an account?"}
             <button
               type="button"

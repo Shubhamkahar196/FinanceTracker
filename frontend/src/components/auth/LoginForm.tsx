@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useRouter } from 'next/router';
 
 // Access the environment variable
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -12,6 +13,7 @@ const LoginForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +36,11 @@ const LoginForm: React.FC = () => {
 
       console.log('Login successful:', response.data);
       setSuccess('Login successful! Redirecting...');
+
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('userId', response.data.userId);
+      router.push('/dashboard');
+
       
      
     } catch (err) {
