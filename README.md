@@ -40,10 +40,12 @@ Follow these steps to get the project up and running on your local machine.
 * npm (v8 or higher)
 * MongoDB (locally or a cloud instance like MongoDB Atlas)
 
+  LIVE LINK : https://finance-tracker-iota-lac.vercel.app/
+
 ### Step 1: Clone the Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Shubhamkahar196/FinanceTracker
 cd personal-finance-tracker
 Step 2: Backend Setup
 Navigate to the backend directory and install the dependencies.
@@ -93,9 +95,7 @@ Endpoint	Method	Description	Access
 /api/v1/transactions/:id	DELETE	Deletes a specific transaction.	Private
 
 
-Live Demo
 
-Live Link:https://finance-tracker-iota-lac.vercel.app/
 
 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
