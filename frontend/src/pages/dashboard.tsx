@@ -181,6 +181,7 @@ const Dashboard: React.FC = () => {
 
   if (loading) {
     return (
+      // <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
         <p className="text-2xl font-semibold text-white">Loading...</p>
       </div>
@@ -202,7 +203,8 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 p-8">
+    // <div className="min-h-screen bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 p-8">
+    <div className="min-h-screen bg-gradient-to-r bg-amber-200 p-8">
       <Head>
         <title>Finance Tracker - Dashboard</title>
       </Head>
@@ -218,7 +220,7 @@ const Dashboard: React.FC = () => {
       </div>
 
       <div className="bg-white bg-opacity-90 p-8 rounded-xl shadow-lg mb-10 max-w-4xl mx-auto">
-        <h2 className="text-3xl font-semibold mb-6 text-gray-800">Add New Transaction</h2>
+        <h2 className="text-3xl font-semibold mb-6 text-rose-950">Add New Transaction</h2>
         {!editingTransaction ? (
           <form onSubmit={handleAdd} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <input
@@ -227,12 +229,13 @@ const Dashboard: React.FC = () => {
               value={newAmount}
               onChange={(e) => setNewAmount(e.target.value)}
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              // className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:text-rose-950 transition"
             />
             <select
               value={newType}
               onChange={(e) => setNewType(e.target.value as 'income' | 'expense')}
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
@@ -243,21 +246,21 @@ const Dashboard: React.FC = () => {
               value={newCategory}
               onChange={(e) => setNewCategory(e.target.value)}
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <input
               type="date"
               value={newDate}
               onChange={(e) => setNewDate(e.target.value)}
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <input
               type="text"
               placeholder="Description"
               value={newDescription}
               onChange={(e) => setNewDescription(e.target.value)}
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition md:col-span-2"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition md:col-span-2"
             />
             <button
               type="submit"
@@ -274,12 +277,12 @@ const Dashboard: React.FC = () => {
               value={editAmount}
               onChange={(e) => setEditAmount(e.target.value)}
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <select
               value={editType}
               onChange={(e) => setEditType(e.target.value as 'income' | 'expense')}
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             >
               <option value="expense">Expense</option>
               <option value="income">Income</option>
@@ -290,21 +293,21 @@ const Dashboard: React.FC = () => {
               value={editCategory}
               onChange={(e) => setEditCategory(e.target.value)}
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <input
               type="date"
               value={editDate}
               onChange={(e) => setEditDate(e.target.value)}
               required
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
             />
             <input
               type="text"
               placeholder="Description"
               value={editDescription}
               onChange={(e) => setEditDescription(e.target.value)}
-              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition md:col-span-2"
+              className="border text-rose-950 border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition md:col-span-2"
             />
             <div className="flex space-x-4 md:col-span-2">
               <button
@@ -334,7 +337,7 @@ const Dashboard: React.FC = () => {
 
         {/* Transaction List Section */}
         <div className="bg-white p-6 rounded-lg shadow-md w-full">
-          <h2 className="text-2xl font-bold mb-4">Transaction History</h2>
+          <h2 className="text-2xl text-amber-950 font-bold mb-4">Transaction History</h2>
           {transactions.length === 0 ? (
             <p className="text-gray-500">No transactions found.</p>
           ) : (

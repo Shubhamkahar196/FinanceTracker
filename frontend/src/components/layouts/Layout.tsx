@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 
-// Define the component's props, which will be the content of the page
+
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -27,7 +27,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* A simple header for navigation */}
       <header className="bg-white shadow-md">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <Link href="/" legacyBehavior>
@@ -47,13 +46,13 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   {userInitial}
                 </div>
               </li>
-              {/* We will add a logout button here later with our auth context */}
+            
             </ul>
           </nav>
         </div>
       </header>
 
-      {/* The main content area where our pages will be rendered */}
+    
       <main className="container mx-auto px-4 py-8">
         {children}
       </main>

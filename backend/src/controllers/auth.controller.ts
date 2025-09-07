@@ -16,7 +16,7 @@ interface AuthRequest extends Request {
 }
 
 const handleServerError = (res: Response, error: unknown) => {
-  console.error(error); // Use console.error for better logging
+  console.error(error); 
   res.status(500).json({ message: 'Internal Server Error', error });
 };
 

@@ -1,4 +1,4 @@
-// src/components/charts/SpendingChart.tsx
+
 
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
@@ -66,7 +66,8 @@ const SpendingChart: React.FC<SpendingChartProps> = ({ transactions }) => {
       {
         label: 'Spending by Category',
         data: dataValues,
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        backgroundColor: 'rgb(128,128,128)',
+        // backgroundColor: 'rgba(90.5%, 0.093, 164.15)',
         borderColor: 'rgba(255, 99, 132, 1)',
         borderWidth: 1,
       },
